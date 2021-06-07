@@ -38,11 +38,23 @@ class ClientTest(unittest.TestCase):
       self.assertEqual(getRatio(price_a, price_b), 0)
 
   
-  def test_getRatio_calculateRatioPrice_AZero(self):
+  def test_getRatio_calculateRatioPrice_BZero(self):
       price_a = 5
       price_b = 0
 
       self.assertEqual(getRatio(price_a, price_b), "This ratio can not be calculated")
+
+  def test_getRatio_greaterThan1(self):
+      price_a = 346.48
+      price_b = 166.39
+      
+      self.assertGreater(getRatio(price_a, price_b), 1)
+
+  def test_getRatio_LessThan1(self):
+      price_a = 166.39
+      price_b = 356.48
+    
+      self.assertLess(getRatio(price_a, price_b), 1)
 
 if __name__ == '__main__':
     unittest.main()
